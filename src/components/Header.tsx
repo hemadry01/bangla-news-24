@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
+import Nevbar from './Nevbar';
 
 const HeaderPage = () => {
 
@@ -9,7 +10,7 @@ const HeaderPage = () => {
     console.log(date);
 
     return (
-      <div className="  justify-center">
+      <div className="relative justify-center mt-4 ">
         <div className="flex justify-between items-center max-w-7xl mx-auto">
           <div className=" flex items-center gap-2 max-width-7xl mx-auto">
             <Image src={"/logo.webp"} alt="Logo" width={50} height={50} />
@@ -27,6 +28,7 @@ const HeaderPage = () => {
             </button>
           </div>
         </div>
+        <Nevbar/>
       </div>
     );
 };
