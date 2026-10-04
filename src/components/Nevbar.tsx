@@ -23,9 +23,15 @@ const NavbarPage = async () => {
 
     return (
       <div className="flex gap-5 justify-center items-center mt-4  ">
-        <Link href="/">হোম</Link>
+        <Link href="/" className="hover:text-red-700 transition-colors">
+          হোম
+        </Link>
         {filterData.map((item, index) => (
-          <Link key={index} href={item.slug}>
+          <Link
+            key={index}
+            href={item.slug}
+            className="hover:text-red-700 transition-colors"
+          >
             {item.title}
           </Link>
         ))}
