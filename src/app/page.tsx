@@ -2,11 +2,14 @@
 import MainNewsPage from "@/components/MainNews";
 import Marquee from "@/components/Marquee";
 import MostReadNewsPage from "@/components/MostReadNews";
+import NewsCardPage from "@/components/NewsCard";
+import { IArticle } from "@/type/Article";
 import { ISection } from "@/type/Section";
 
 export default async function HomePage() {
 
-let mainNews: ISection[] = [];
+let mainNews: IArticle[] = [];
+let otherNews: ISection[] = [];
 
 try{
     const res = await fetch(process.env.BANGLA_NEWS_SECTIONS_API_KEY as string);
@@ -15,11 +18,10 @@ try{
     }
 
     const data = await res.json();
-    const section =data.data;
+    const section: ISection[] =data.data;
 
-    mainNews = section[0].articles;
-    //console.log("Section Data",section);
-    // console.log("Main News",mainNews);
+    mainNews = mainNews = section[0]?.articles ?? [];
+    otherNews = section.slice(1);
 
 }
 catch(error){
@@ -29,15 +31,28 @@ catch(error){
 
   return (
     <div>
-      <Marquee/>
+      <Marquee />
       <div className="grid grid-cols-3 max-w-7xl mx-auto mt-4">
-        <div className="col-span-2 ">
-          <MainNewsPage news={mainNews}/>
-        </div>
-        <div className="col-span-1">
-          <MostReadNewsPage/>
+        <div className="col-span-2 p-4">
+          <MainNewsPage news={mainNews} />
+          {/* ================= Other News ================= */}
+          <div className=" grid gap-5 mt-5 p-2">
+            {otherNews.map((on) => (
+              <div key={on.curationId}>
+                <h2>{on.title}</h2>
+                <div className="grid mt-3 grid-cols-3 gap-2">
+                  {on.articles.map((anews) => (
+                    <NewsCardPage key={anews.id} anews={anews} />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
+        <div className="col-span-1">
+          <MostReadNewsPage />
+        </div>
       </div>
     </div>
   );
