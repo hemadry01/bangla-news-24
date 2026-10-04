@@ -1,5 +1,3 @@
-import { Interface } from "readline";
-
 export interface ISection {
 
     id: string,
@@ -10,4 +8,5 @@ export interface ISection {
     imageAlt:string,
     category: string,
     type: string,
+    source: string,
 }

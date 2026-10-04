@@ -1,8 +1,8 @@
 
 import MainNewsPage from "@/components/MainNews";
 import Marquee from "@/components/Marquee";
+import MostReadNewsPage from "@/components/MostReadNews";
 import { ISection } from "@/type/Section";
-import Image from "next/image";
 
 export default async function HomePage() {
 
@@ -19,7 +19,7 @@ try{
 
     mainNews = section[0].articles;
     //console.log("Section Data",section);
-    console.log("Main News",mainNews);
+    // console.log("Main News",mainNews);
 
 }
 catch(error){
@@ -34,7 +34,9 @@ catch(error){
         <div className="col-span-2 ">
           <MainNewsPage news={mainNews}/>
         </div>
-        <div className="col-span-1 bg-blue-600 p-10"></div>
+        <div className="col-span-1">
+          <MostReadNewsPage/>
+        </div>
 
       </div>
     </div>

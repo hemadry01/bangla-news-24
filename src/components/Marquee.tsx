@@ -14,7 +14,7 @@ const Marquee = async() => {
       }
       const latestNews = await res.json();
        data = latestNews.data;
-      console.log("Latest News:", data);
+      //console.log("Latest News:", data);
     } catch (err) {
       console.error("Error fetching latest news", err);
     }
