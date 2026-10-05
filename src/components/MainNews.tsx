@@ -19,7 +19,7 @@ const MainNewsPage = ({ news }: ISectionProps) => {
           <figure>
             <Image
               src={firstNews.imageUrl}
-              alt={firstNews.imageAlt}
+              alt={firstNews.imageAlt ?? 'Main news image'}
               width={600}
               height={600}
             />

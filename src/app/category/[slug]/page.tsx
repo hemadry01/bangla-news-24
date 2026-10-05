@@ -1,5 +1,6 @@
 import NewsCardPage from "@/components/NewsCard";
-import { INews } from "@/type/News";
+import { IArticle } from "@/type/Article";
+import { notFound } from "next/navigation";
 
 interface CategoryPageProps {
   params: Promise<{
@@ -20,9 +21,11 @@ const CategoryPage = async ({ params }: CategoryPageProps) => {
   }
    
   const data = await res.json();
-  const otherNews:INews[]=data.data;
-
-  console.log("data", data);
+  const otherNews:IArticle[]=data.data;
+  
+  if (!otherNews) {
+    notFound();
+  }
 
    return (
      <main className="container mx-auto p-5">

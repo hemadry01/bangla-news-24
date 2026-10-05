@@ -2,10 +2,9 @@ export interface IArticle {
   id: string;
   title: string;
   description: string;
-  link: string;
+  text: string;
   imageUrl: string;
-  imageAlt: string;
-  category: string;
-  type: string;
-  source: string;
+  imageAlt?: string;
+  category?: string;
+  source?: string;
 }
