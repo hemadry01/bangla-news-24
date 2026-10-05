@@ -29,7 +29,7 @@ const NavbarPage = async () => {
         {filterData.map((item, index) => (
           <Link
             key={index}
-            href={`/categories/${item.slug}`}
+            href={`/category/${item.slug}`}
             className="hover:text-red-700 transition-colors"
           >
             {item.title}
