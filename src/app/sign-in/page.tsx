@@ -1,6 +1,5 @@
 "use client"
 import { signIn } from '@/lib/auth-client';
-import { email } from 'better-auth';
 import React from 'react';
 
 const SignInPage = () => {
@@ -22,6 +21,17 @@ const SignInPage = () => {
       alert("Invalid email or password");
     }
   }
+
+  const handleWithGoogle = async() =>{
+  
+         try {
+           await signIn.social({
+             provider: "google",
+           });
+         } catch (error) {
+           console.error("Google Sign In Error:", error);
+         }
+      }
 
     return (
       <div className="flex flex-col items-center justify-center mt-5">
@@ -49,6 +59,9 @@ const SignInPage = () => {
             </button>
           </fieldset>
         </form>
+        <button onClick={handleWithGoogle} className="btn">
+          Sign In With Google
+        </button>
       </div>
     );
 };

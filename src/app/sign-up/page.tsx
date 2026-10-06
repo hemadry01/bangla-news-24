@@ -1,5 +1,5 @@
 "use client"
-import { signUp } from '@/lib/auth-client';
+import { signIn, signUp } from '@/lib/auth-client';
 import { redirect } from 'next/navigation';
 import React from 'react';
 
@@ -9,7 +9,12 @@ const SignUpPage = () => {
         e.preventDefault();
         // const fromData = new FormData(e.currentTarget);
         const fromData = new FormData(e.target);
-        const data = Object.fromEntries(fromData.entries()) as {name:string, email:string, image:string, password:string};
+        const data = Object.fromEntries(fromData.entries()) as {
+          name: string;
+          email: string;
+          image: string;
+          password: string;
+        };
         //const data = Object.fromEntries(fromData.entries()) ;
 
         console.log("from data submit",data);
@@ -44,6 +49,26 @@ const SignUpPage = () => {
         //  }
         ///////////////////////////////////////////////////////////////
     };
+
+    const handleWithGoogle = async() =>{
+
+      //  const {data,error} = await signIn.social({
+      //    provider: "google",
+      //  });
+
+      //  console.log("Sign In With Google",data);
+      //  if (error) {
+      //    console.log(error);
+      //  }
+
+       try {
+         await signIn.social({
+           provider: "google",
+         });
+       } catch (error) {
+         console.error("Google Sign In Error:", error);
+       }
+    }
 
     return (
       <div className="flex flex-col items-center justify-center mt-5">
@@ -87,6 +112,7 @@ const SignUpPage = () => {
             </button>
           </fieldset>
         </form>
+        <button onClick={handleWithGoogle} className='btn'>Sign In With Google</button>
       </div>
     );
 };

@@ -4,7 +4,12 @@ import Link from 'next/link';
 import React from 'react';
 
 const UserInfo = () => {
-    const {data:session}  = useSession();
+    const { data: session, isPending } = useSession();
+
+    if (isPending) {
+      return <p>Loading...</p>;
+    }
+    
     const user = session?.user
 
     const handleSignOut =async()=>{
