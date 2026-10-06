@@ -1,10 +1,32 @@
+"use client"
+import { signIn } from '@/lib/auth-client';
+import { email } from 'better-auth';
 import React from 'react';
 
 const SignInPage = () => {
+
+  const onSubmit = async(e: React.SubmitEvent<HTMLFormElement>) =>{
+
+    e.preventDefault();
+    const fromData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(fromData.entries()) as {email:string, password:string};
+
+    const { data: resdata, error } = await signIn.email({
+      email: data.email ,
+      password: data.password ,
+      rememberMe: true,
+      callbackURL: "/",
+      
+    });
+    if(error){
+      alert("Invalid email or password");
+    }
+  }
+
     return (
       <div className="flex flex-col items-center justify-center mt-5">
         <h2 className="text-2xl font-bold text-red-700"> সাইন ইন</h2>
-        <form>
+        <form onSubmit={onSubmit}>
           <fieldset className="fieldset rounded-box w-[400px] ">
             <label className="label">ইমেইল</label>
             <input
