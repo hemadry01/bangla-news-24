@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import Nevbar from './Nevbar';
+import UserInfo from './UserInfo';
 
 const HeaderPage = () => {
 
@@ -19,14 +20,7 @@ const HeaderPage = () => {
               <p className="text-gray-400">{date}</p>
             </div>
           </div>
-          <div className="flex gap-2 items-baseline">
-            <button className="hover:text-red-700 cursor-pointer">
-              সাইন ইন
-            </button>
-            <button className="btn bg-red-700 text-white hover:bg-red-900 cursor-pointer">
-              সাইন আপ
-            </button>
-          </div>
+         <UserInfo/>
         </div>
         <Nevbar/>
       </div>

@@ -4,7 +4,7 @@ export interface INews {
   description: {
     blocks: {
       text?: string;
-    }[];
+    }[]; //it is not empty array it's type script syntext
   };
   text: string;
   imageUrl: string;

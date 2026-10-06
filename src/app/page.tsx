@@ -28,7 +28,7 @@ export default async function HomePage() {
 
   return (
     <div>
-      <Marquee />
+      {/* <Marquee /> */}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 max-w-7xl mx-auto mt-4">
         {/* Main Content */}
